@@ -25,14 +25,14 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] border-[5px]`}
       >
-        <header>
+        <header className="border-[2px] border-[red]">
           <a href="/">홈</a>
           <a href="/about">소개</a>
         </header>
-        {children}
-        <footer>Copyright 2025.</footer>
+        <main className="border-[2px] border-[blue]">{children}</main>
+        <footer className="border-[2px] border-[pink]">Copyright 2025.</footer>
       </body>
     </html>
   );
