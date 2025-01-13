@@ -3,22 +3,30 @@ package com.ll.nextjs20250110.domain.post.comment.dto;
 import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
 import java.time.LocalDateTime;
 import lombok.Getter;
+import org.springframework.lang.NonNull;
 
 @Getter
 public class PostCommentDto {
-    private long id;
+    @NonNull
+    private final long id;
 
-    private LocalDateTime createDate;
+    @NonNull
+    private final LocalDateTime createDate;
 
-    private LocalDateTime modifyDate;
+    @NonNull
+    private final LocalDateTime modifyDate;
 
-    private long postId;
+    @NonNull
+    private final long postId;
 
-    private long authorId;
+    @NonNull
+    private final long authorId;
 
-    private String authorName;
+    @NonNull
+    private final String authorName;
 
-    private String content;
+    @NonNull
+    private final String content;
 
     public PostCommentDto(PostComment postComment) {
         this.id = postComment.getId();

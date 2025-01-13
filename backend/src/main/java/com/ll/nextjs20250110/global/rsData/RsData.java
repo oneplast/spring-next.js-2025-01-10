@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.lang.NonNull;
 
 @JsonInclude(Include.NON_NULL)
 @AllArgsConstructor
 @Getter
 public class RsData<T> {
+    @NonNull
     private String resultCode;
+    @NonNull
     private String msg;
     private T data;
 

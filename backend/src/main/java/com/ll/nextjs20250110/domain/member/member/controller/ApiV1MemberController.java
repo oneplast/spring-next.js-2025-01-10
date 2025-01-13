@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,8 +61,11 @@ public class ApiV1MemberController {
     }
 
     record MemberLoginResBody(
+            @NonNull
             MemberDto item,
+            @NonNull
             String apiKey,
+            @NonNull
             String accessToken
     ) {
     }

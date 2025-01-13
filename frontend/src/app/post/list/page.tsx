@@ -20,7 +20,7 @@ export default async function Page() {
       <hr />
 
       <ul>
-        {body.items?.map((item: PostDto) => (
+        {body.items.map((item: PostDto) => (
           <li key={item.id} className="border-[2px] border-[red] my-3">
             <div>id : {item.id}</div>
             <div>createDate : {item.createDate}</div>

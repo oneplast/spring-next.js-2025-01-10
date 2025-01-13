@@ -3,14 +3,24 @@ package com.ll.nextjs20250110.global.dto;
 import java.util.List;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
+import org.springframework.lang.NonNull;
 
 @Getter
 public class PageDto<T> {
-    private int currentPageNumber;
-    private int pageSize;
-    private long totalPages;
-    private long totalItems;
-    private List<T> items;
+    @NonNull
+    private final int currentPageNumber;
+
+    @NonNull
+    private final int pageSize;
+
+    @NonNull
+    private final long totalPages;
+
+    @NonNull
+    private final long totalItems;
+
+    @NonNull
+    private final List<T> items;
 
     public PageDto(Page<T> page) {
         this.currentPageNumber = page.getNumber() + 1;
