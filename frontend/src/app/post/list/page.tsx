@@ -20,13 +20,13 @@ export default async function Page({
   const response = await client.GET("/api/v1/posts", {
     params: {
       query: {
-        searchKeyword: searchKeyword,
-        searchKeywordType: searchKeywordType,
+        searchKeyword,
+        searchKeywordType,
       },
     },
   });
 
-  const responseBody = response.data;
+  const responseBody = response.data!!;
 
   return (
     <div>
@@ -40,13 +40,13 @@ export default async function Page({
       </form>
 
       <div>
-        <div>currentPageNumber: {responseBody?.currentPageNumber}</div>
+        <div>currentPageNumber: {responseBody.currentPageNumber}</div>
 
-        <div>pageSize: {responseBody?.pageSize}</div>
+        <div>pageSize: {responseBody.pageSize}</div>
 
-        <div>totalPages: {responseBody?.totalPages}</div>
+        <div>totalPages: {responseBody.totalPages}</div>
 
-        <div>totalItems: {responseBody?.totalItems}</div>
+        <div>totalItems: {responseBody.totalItems}</div>
       </div>
 
       <hr />
