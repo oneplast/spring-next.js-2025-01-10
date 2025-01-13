@@ -1,7 +1,18 @@
+import client from "@/lib/backend/client";
 import ClientPage from "./ClientPage";
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: number } }) {
   const { id } = await params;
 
-  return <ClientPage id={id} />;
+  const response = await client.GET("/api/v1/posts/{id}", {
+    params: {
+      path: {
+        id,
+      },
+    },
+  });
+
+  const post = response.data!!;
+
+  return <ClientPage post={post} />;
 }

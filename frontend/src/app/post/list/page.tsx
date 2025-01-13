@@ -1,11 +1,5 @@
-import createClient from "openapi-fetch";
-
-import type { paths } from "@/lib/backend/apiV1/schema";
+import client from "@/lib/backend/client";
 import ClientPage from "./ClientPage";
-
-const client = createClient<paths>({
-  baseUrl: "http://localhost:8080",
-});
 
 export default async function Page({
   searchParams,
