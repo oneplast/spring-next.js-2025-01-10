@@ -12,7 +12,8 @@ export default async function Page({
     searchKeyword?: string;
   };
 }) {
-  const { searchKeyword = "", searchKeywordType = "title" } = searchParams;
+  const { searchKeyword = "", searchKeywordType = "title" } =
+    await searchParams;
 
   const response = await fetch(
     `http://localhost:8080/api/v1/posts?searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`
