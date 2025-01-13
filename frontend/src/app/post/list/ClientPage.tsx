@@ -2,6 +2,7 @@
 
 import type { components } from "@/lib/backend/apiV1/schema";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ClientPage({
   searchKeyword,
@@ -16,9 +17,25 @@ export default function ClientPage({
   pageSize: number;
   responseBody: components["schemas"]["PageDtoPostDto"];
 }) {
+  const router = useRouter();
+
   return (
     <div>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          const formData = new FormData(e.target as HTMLFormElement);
+          const searchKeyword = formData.get("searchKeyword") as string;
+          const searchKeywordType = formData.get("searchKeywordType") as string;
+          const page = formData.get("page") as string;
+          const pageSize = formData.get("pageSize") as string;
+
+          router.push(
+            `?page=${page}&pageSize=${pageSize}&searchKeywordTpye=${searchKeywordType}&searchKeyword=${searchKeyword}`
+          );
+        }}
+      >
         <input type="hidden" name="page" value="1" />
         <select name="pageSize" defaultValue={pageSize}>
           <option disabled>페이지당 행 수</option>
