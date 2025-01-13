@@ -5,6 +5,7 @@ import com.ll.nextjs20250110.domain.member.member.service.MemberService;
 import com.ll.nextjs20250110.domain.post.post.entity.Post;
 import com.ll.nextjs20250110.domain.post.post.service.PostService;
 import com.ll.nextjs20250110.global.app.AppConfig;
+import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -71,6 +72,11 @@ public class BaseInitData {
         if (AppConfig.isNotProd()) {
             memberUser5.setApiKey("user5");
         }
+
+        Member memberUser6 = memberService.join("user6", "1234", "유저6");
+        if (AppConfig.isNotProd()) {
+            memberUser6.setApiKey("user6");
+        }
     }
 
     @Transactional
@@ -83,6 +89,8 @@ public class BaseInitData {
         Member memberUser2 = memberService.findByUsername("user2").get();
         Member memberUser3 = memberService.findByUsername("user3").get();
         Member memberUser4 = memberService.findByUsername("user4").get();
+        Member memberUser5 = memberService.findByUsername("user5").get();
+        Member memberUser6 = memberService.findByUsername("user6").get();
 
         Post post1 = postService.write(memberUser1, "축구 하실 분?", "14시 까지 22명을 모아야 합니다.", true, true);
         post1.addComment(memberUser2, "저요!");
@@ -99,5 +107,25 @@ public class BaseInitData {
                 , true, false);
         postService.write(memberUser4, "발야구를 새벽 3시에 하실 분?", "새벽 3시 까지 19명을 모아야 합니다."
                 , false, true);
+
+        IntStream.rangeClosed(9, 100).forEach(
+                i -> postService.write(
+                        memberUser5,
+                        "테스트 게시물 " + i,
+                        "테스트 게시물 " + i + " 내용",
+                        i % 3 != 0,
+                        i % 4 != 0
+                )
+        );
+
+        IntStream.rangeClosed(101, 200).forEach(
+                i -> postService.write(
+                        memberUser6,
+                        "테스트 게시물 " + i,
+                        "테스트 게시물 " + i + " 내용",
+                        i % 5 != 0,
+                        i % 6 != 0
+                )
+        );
     }
 }
