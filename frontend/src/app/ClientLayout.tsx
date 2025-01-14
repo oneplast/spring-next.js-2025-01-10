@@ -15,6 +15,7 @@ export default function ClientLayout({
           <Link href="/about">소개</Link>
           <Link href="/post/list">글</Link>
           <Link href="/member/login">로그인</Link>
+          <Link href="/member/me">내 정보</Link>
         </div>
       </header>
 
