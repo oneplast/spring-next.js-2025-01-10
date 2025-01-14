@@ -195,6 +195,12 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        Empty: Record<string, never>;
+        RsDataEmpty: {
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["Empty"];
+        };
         PostCommentModifyReqBody: {
             content: string;
         };
@@ -215,7 +221,7 @@ export interface components {
         RsDataPostCommentDto: {
             resultCode: string;
             msg: string;
-            data?: components["schemas"]["PostCommentDto"];
+            data: components["schemas"]["PostCommentDto"];
         };
         PostModifyReqBody: {
             title: string;
@@ -241,7 +247,7 @@ export interface components {
         RsDataPostWithContentDto: {
             resultCode: string;
             msg: string;
-            data?: components["schemas"]["PostWithContentDto"];
+            data: components["schemas"]["PostWithContentDto"];
         };
         PostWriteReqBody: {
             title: string;
@@ -273,7 +279,7 @@ export interface components {
         RsDataMemberLoginResBody: {
             resultCode: string;
             msg: string;
-            data?: components["schemas"]["MemberLoginResBody"];
+            data: components["schemas"]["MemberLoginResBody"];
         };
         MemberJoinReqBody: {
             username: string;
@@ -283,7 +289,7 @@ export interface components {
         RsDataMemberDto: {
             resultCode: string;
             msg: string;
-            data?: components["schemas"]["MemberDto"];
+            data: components["schemas"]["MemberDto"];
         };
         PageDtoPostDto: {
             /** Format: int32 */
@@ -317,11 +323,6 @@ export interface components {
             totalPublishedPostCount: number;
             /** Format: int64 */
             totalListedPostCount: number;
-        };
-        RsDataVoid: {
-            resultCode: string;
-            msg: string;
-            data?: Record<string, never>;
         };
     };
     responses: never;
@@ -357,6 +358,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["RsDataPostCommentDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     delete: {
@@ -377,7 +387,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=utf-8": components["schemas"]["RsDataVoid"];
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -400,6 +419,15 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["PostWithContentDto"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -428,6 +456,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["RsDataPostWithContentDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     delete_1: {
@@ -447,7 +484,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=utf-8": components["schemas"]["RsDataVoid"];
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -475,6 +521,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["PageDtoPostDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     write: {
@@ -499,6 +554,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["RsDataPostWithContentDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     items_1: {
@@ -519,6 +583,15 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["PostCommentDto"][];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -547,6 +620,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["RsDataPostCommentDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     login: {
@@ -569,6 +651,15 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["RsDataMemberLoginResBody"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -595,6 +686,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["RsDataMemberDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     statistics: {
@@ -613,6 +713,15 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["PostStatisticsResBody"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };
@@ -640,6 +749,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["PageDtoPostDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     me: {
@@ -660,6 +778,15 @@ export interface operations {
                     "application/json;charset=utf-8": components["schemas"]["MemberDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
         };
     };
     logout: {
@@ -677,7 +804,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=utf-8": components["schemas"]["RsDataVoid"];
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
                 };
             };
         };

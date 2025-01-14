@@ -11,6 +11,9 @@ spring:
   output:
     ansi:
       enabled: always
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
   datasource:
     url: jdbc:h2:./db_dev;MODE=MySQL
     username: sa

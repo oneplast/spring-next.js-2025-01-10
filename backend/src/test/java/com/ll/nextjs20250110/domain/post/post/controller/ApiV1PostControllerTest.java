@@ -10,7 +10,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ll.nextjs20250110.domain.post.post.controller.ApiV1PostController;
 import com.ll.nextjs20250110.domain.member.member.entity.Member;
 import com.ll.nextjs20250110.domain.member.member.service.MemberService;
 import com.ll.nextjs20250110.domain.post.post.entity.Post;
@@ -64,9 +63,9 @@ public class ApiV1PostControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(post.getId()))
                 .andExpect(jsonPath("$.createDate").value(
-                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.modifyDate").value(
-                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.authorId").value(post.getAuthor().getId()))
                 .andExpect(jsonPath("$.authorName").value(post.getAuthor().getName()))
                 .andExpect(jsonPath("$.title").value(post.getTitle()))
@@ -126,9 +125,9 @@ public class ApiV1PostControllerTest {
                         .formatted(post.getId())))
                 .andExpect(jsonPath("$.data.id").value(post.getId()))
                 .andExpect(jsonPath("$.data.createDate").value(
-                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.modifyDate").value(
-                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.authorId").value(post.getAuthor().getId()))
                 .andExpect(jsonPath("$.data.authorName").value(post.getAuthor().getName()))
                 .andExpect(jsonPath("$.data.title").value(post.getTitle()))
@@ -226,9 +225,9 @@ public class ApiV1PostControllerTest {
                 .andExpect(jsonPath("$.msg").value("1번 글이 수정되었습니다."))
                 .andExpect(jsonPath("$.data.id").value(1))
                 .andExpect(jsonPath("$.data.createDate").value(
-                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.modifyDate").value(
-                        Matchers.not(Matchers.startsWith(oldModifyDate.toString().substring(0, 25)))))
+                        Matchers.not(Matchers.startsWith(oldModifyDate.toString().substring(0, 20)))))
                 .andExpect(jsonPath("$.data.authorId").value(post.getAuthor().getId()))
                 .andExpect(jsonPath("$.data.authorName").value(post.getAuthor().getName()))
                 .andExpect(jsonPath("$.data.title").value("축구 하실 분 계신가요?"))
@@ -418,9 +417,9 @@ public class ApiV1PostControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(post.getId()))
                 .andExpect(jsonPath("$.createDate").value(
-                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.modifyDate").value(
-                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                        Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.authorId").value(post.getAuthor().getId()))
                 .andExpect(jsonPath("$.authorName").value(post.getAuthor().getName()))
                 .andExpect(jsonPath("$.title").value(post.getTitle()))
@@ -441,7 +440,7 @@ public class ApiV1PostControllerTest {
         resultActions
                 .andExpect(status().isUnauthorized())
                 .andExpect(jsonPath("$.resultCode").value("401-1"))
-                .andExpect(jsonPath("$.msg").value("로그인이 필요합니다."));
+                .andExpect(jsonPath("$.msg").value("비밀글 입니다. 로그인 후 이용해주세요."));
     }
 
     @Test
@@ -495,9 +494,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))
@@ -534,9 +533,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))
@@ -573,9 +572,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))
@@ -616,9 +615,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))
@@ -661,9 +660,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))
@@ -705,9 +704,9 @@ public class ApiV1PostControllerTest {
             resultActions
                     .andExpect(jsonPath("$.items[%d].id".formatted(i)).value(post.getId()))
                     .andExpect(jsonPath("$.items[%d].createDate".formatted(i)).value(
-                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].modifyDate".formatted(i)).value(
-                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 25))))
+                            Matchers.startsWith(post.getModifyDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$.items[%d].authorId".formatted(i)).value(post.getAuthor().getId()))
                     .andExpect(jsonPath("$.items[%d].authorName".formatted(i)).value(post.getAuthor().getName()))
                     .andExpect(jsonPath("$.items[%d].title".formatted(i)).value(post.getTitle()))

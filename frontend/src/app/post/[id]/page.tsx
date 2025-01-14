@@ -12,6 +12,10 @@ export default async function Page({ params }: { params: { id: number } }) {
     },
   });
 
+  if (response.error) {
+    return <>{response.error.msg}</>;
+  }
+
   const post = response.data!!;
 
   return <ClientPage post={post} />;

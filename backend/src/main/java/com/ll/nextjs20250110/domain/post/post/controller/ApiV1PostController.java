@@ -5,6 +5,7 @@ import com.ll.nextjs20250110.domain.post.post.dto.PostDto;
 import com.ll.nextjs20250110.domain.post.post.dto.PostWithContentDto;
 import com.ll.nextjs20250110.domain.post.post.entity.Post;
 import com.ll.nextjs20250110.domain.post.post.service.PostService;
+import com.ll.nextjs20250110.global.dto.Empty;
 import com.ll.nextjs20250110.global.dto.PageDto;
 import com.ll.nextjs20250110.global.exceptions.ServiceException;
 import com.ll.nextjs20250110.global.rq.Rq;
@@ -97,7 +98,7 @@ public class ApiV1PostController {
             Member actor = rq.getActor();
 
             if (actor == null) {
-                throw new ServiceException("401-1", "로그인이 필요합니다.");
+                throw new ServiceException("401-1", "비밀글 입니다. 로그인 후 이용해주세요.");
             }
 
             post.checkActorCanRead(actor);
@@ -175,7 +176,7 @@ public class ApiV1PostController {
     @DeleteMapping("/{id}")
     @Transactional
     @Operation(summary = "삭제", description = "작성자 본인 뿐만 아니라 관리자도 삭제 가능")
-    public RsData<Void> delete(@PathVariable long id) {
+    public RsData<Empty> delete(@PathVariable long id) {
         Member member = rq.getActor();
 
         Post post = postService.findById(id).get();

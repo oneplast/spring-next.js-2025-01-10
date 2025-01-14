@@ -6,6 +6,7 @@ import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
 import com.ll.nextjs20250110.domain.post.post.entity.Post;
 import com.ll.nextjs20250110.domain.post.post.repository.PostRepository;
 import com.ll.nextjs20250110.domain.post.post.service.PostService;
+import com.ll.nextjs20250110.global.dto.Empty;
 import com.ll.nextjs20250110.global.exceptions.ServiceException;
 import com.ll.nextjs20250110.global.rq.Rq;
 import com.ll.nextjs20250110.global.rsData.RsData;
@@ -55,7 +56,7 @@ public class ApiV1PostCommentController {
     @DeleteMapping("/{id}")
     @Transactional
     @Operation(summary = "삭제")
-    public RsData<Void> delete(@PathVariable long postId, @PathVariable long id) {
+    public RsData<Empty> delete(@PathVariable long postId, @PathVariable long id) {
         Member actor = rq.getActor();
 
         Post post = postService.findById(postId).orElseThrow(

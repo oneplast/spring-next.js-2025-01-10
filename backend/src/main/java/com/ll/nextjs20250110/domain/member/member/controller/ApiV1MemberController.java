@@ -4,6 +4,7 @@ import com.ll.nextjs20250110.domain.member.member.dto.MemberDto;
 import com.ll.nextjs20250110.domain.member.member.entity.Member;
 import com.ll.nextjs20250110.domain.member.member.service.AuthTokenService;
 import com.ll.nextjs20250110.domain.member.member.service.MemberService;
+import com.ll.nextjs20250110.global.dto.Empty;
 import com.ll.nextjs20250110.global.exceptions.ServiceException;
 import com.ll.nextjs20250110.global.rq.Rq;
 import com.ll.nextjs20250110.global.rsData.RsData;
@@ -93,7 +94,7 @@ public class ApiV1MemberController {
     @DeleteMapping("/logout")
     @Transactional(readOnly = true)
     @Operation(summary = "로그아웃", description = "apiKey, accessToken 을 제거합니다.")
-    public RsData<Void> logout() {
+    public RsData<Empty> logout() {
         rq.deleteCookie("accessToken");
         rq.deleteCookie("apiKey");
 

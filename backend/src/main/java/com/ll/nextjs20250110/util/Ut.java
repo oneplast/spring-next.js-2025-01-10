@@ -1,6 +1,7 @@
 package com.ll.nextjs20250110.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ll.nextjs20250110.global.app.AppConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class Ut {
     }
 
     public static class json {
-        private static final ObjectMapper om = new ObjectMapper();
+        private static final ObjectMapper om = AppConfig.getObjectMapper();
 
         @SneakyThrows
         public static String toString(Object obj) {

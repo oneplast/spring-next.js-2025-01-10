@@ -1,5 +1,6 @@
 package com.ll.nextjs20250110.global.exceptions;
 
+import com.ll.nextjs20250110.global.dto.Empty;
 import com.ll.nextjs20250110.global.rsData.RsData;
 
 public class ServiceException extends RuntimeException {
@@ -12,7 +13,7 @@ public class ServiceException extends RuntimeException {
         this.msg = msg;
     }
 
-    public RsData<Void> getRsData() {
+    public RsData<Empty> getRsData() {
         return new RsData<>(resultCode, msg);
     }
 }

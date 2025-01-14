@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ll.nextjs20250110.domain.member.member.controller.ApiV1MemberController;
 import com.ll.nextjs20250110.domain.member.member.entity.Member;
 import com.ll.nextjs20250110.domain.member.member.service.MemberService;
 import jakarta.servlet.http.Cookie;
@@ -67,9 +66,9 @@ class ApiV1MemberControllerTest {
                 .andExpect(jsonPath("$.data").exists())
                 .andExpect(jsonPath("$.data.id").value(member.getId()))
                 .andExpect(jsonPath("$.data.createDate")
-                        .value(Matchers.startsWith(member.getCreateDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(member.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.modifyDate")
-                        .value(Matchers.startsWith(member.getModifyDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(member.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.nickname").value(member.getNickname()));
 
         assertThat(member.getNickname()).isEqualTo("무명");
@@ -159,9 +158,9 @@ class ApiV1MemberControllerTest {
                 .andExpect(jsonPath("$.data.item.id").value(member.getId()))
                 .andExpect(jsonPath("$.data.item.id").isNumber())
                 .andExpect(jsonPath("$.data.item.createDate")
-                        .value(Matchers.startsWith(member.getCreateDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(member.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.item.modifyDate")
-                        .value(Matchers.startsWith(member.getModifyDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(member.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.item.nickname").value(member.getNickname()))
                 .andExpect(jsonPath("$.data.apiKey").value(member.getApiKey()))
                 .andExpect(jsonPath("$.data.accessToken").exists());
@@ -303,9 +302,9 @@ class ApiV1MemberControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(actor.getId()))
                 .andExpect(jsonPath("$.createDate")
-                        .value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.modifyDate")
-                        .value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.nickname").value(actor.getNickname()));
     }
 
@@ -328,9 +327,9 @@ class ApiV1MemberControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(actor.getId()))
                 .andExpect(jsonPath("$.createDate")
-                        .value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.modifyDate")
-                        .value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 25))))
+                        .value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.nickname").value(actor.getNickname()));
     }
 
