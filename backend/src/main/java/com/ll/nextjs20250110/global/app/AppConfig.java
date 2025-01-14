@@ -18,4 +18,8 @@ public class AppConfig {
     public static boolean isNotProd() {
         return true;
     }
+
+    public static String getSiteFromUrl() {
+        return "http://localhost:3000";
+    }
 }
