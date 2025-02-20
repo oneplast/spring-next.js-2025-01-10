@@ -30,6 +30,8 @@ export default function ClientPage() {
       body: {
         title: form._title.value,
         content: form.content.value,
+        listed: form.listed.checked,
+        published: form.published.checked,
       },
     });
 
@@ -54,6 +56,14 @@ export default function ClientPage() {
         <div>
           <label>내용</label>
           <textarea name="content" className="p-2" placeholder="내용" />
+        </div>
+        <div>
+          <label>검색</label>
+          <input type="checkbox" name="listed" />
+        </div>
+        <div>
+          <label>공개</label>
+          <input type="checkbox" name="published" />
         </div>
         <div>
           <input type="submit" value="작성" />
