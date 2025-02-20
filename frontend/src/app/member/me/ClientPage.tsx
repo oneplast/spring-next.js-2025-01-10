@@ -4,20 +4,11 @@ import { components } from "@/lib/backend/apiV1/schema";
 import client from "@/lib/backend/client";
 import { useEffect, useState } from "react";
 
-export default function ClientPage() {
-  const [me, setMe] = useState<components["schemas"]["MemberDto"] | null>(null);
-
-  const loadMe = async () => {
-    const response = await client.GET("/api/v1/members/me");
-    response.data && setMe(response.data);
-  };
-
-  useEffect(() => {
-    loadMe();
-  }, []);
-
-  if (me == null) return <>로딩중</>;
-
+export default function ClientPage({
+  me,
+}: {
+  me: components["schemas"]["MemberDto"];
+}) {
   return (
     <div>
       <div>ID : {me.id}</div>
