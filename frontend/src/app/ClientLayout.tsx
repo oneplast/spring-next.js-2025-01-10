@@ -1,14 +1,18 @@
 "use client";
 
+import { components } from "@/lib/backend/apiV1/schema";
 import client from "@/lib/backend/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ClientLayout({
   children,
+  me,
 }: Readonly<{
   children: React.ReactNode;
+  me: components["schemas"]["MemberDto"];
 }>) {
+  const isLogin = me.id !== 0;
   const router = useRouter();
 
   const logout = async () => {
@@ -29,9 +33,10 @@ export default function ClientLayout({
           <Link href="/">홈</Link>
           <Link href="/about">소개</Link>
           <Link href="/post/list">글</Link>
-          <Link href="/member/login">로그인</Link>
-          <button onClick={logout}>로그아웃</button>
-          <Link href="/member/me">내 정보</Link>
+          {!isLogin && <Link href="/member/join">회원가입</Link>}
+          {!isLogin && <Link href="/member/login">로그인</Link>}
+          {isLogin && <button onClick={logout}>로그아웃</button>}
+          {isLogin && <Link href="/member/me">내 정보</Link>}
         </div>
       </header>
 
