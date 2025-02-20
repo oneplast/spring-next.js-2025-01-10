@@ -1,6 +1,7 @@
 "use client";
 
 import { components } from "@/lib/backend/apiV1/schema";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ClientPage({
@@ -23,6 +24,9 @@ export default function ClientPage({
       <h1>{post.title}</h1>
       <hr />
       <p>{post.content}</p>
+      <div>
+        <Link href={`/post/${post.id}/edit`}>수정</Link>
+      </div>
     </div>
   );
 }

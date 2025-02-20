@@ -51,7 +51,13 @@ export default function ClientPage() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>제목</label>
-          <input type="text" name="_title" className="p-2" placeholder="제목" />
+          <input
+            type="text"
+            name="_title"
+            className="p-2"
+            placeholder="제목"
+            autoFocus
+          />
         </div>
         <div>
           <label>내용</label>
