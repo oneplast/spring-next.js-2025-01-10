@@ -3,7 +3,6 @@
 import { components } from "@/lib/backend/apiV1/schema";
 import client from "@/lib/backend/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function ClientLayout({
   children,
@@ -13,7 +12,6 @@ export default function ClientLayout({
   me: components["schemas"]["MemberDto"];
 }>) {
   const isLogin = me.id !== 0;
-  const router = useRouter();
 
   const logout = async () => {
     const response = await client.DELETE("/api/v1/members/logout");
@@ -23,7 +21,7 @@ export default function ClientLayout({
       return;
     }
 
-    router.replace("/");
+    window.location.replace("/");
   };
 
   return (

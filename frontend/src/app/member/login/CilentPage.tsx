@@ -1,11 +1,8 @@
 "use client";
 
 import client from "@/lib/backend/client";
-import { useRouter } from "next/navigation";
 
 export default function ClientPage() {
-  const router = useRouter();
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -37,7 +34,7 @@ export default function ClientPage() {
     }
 
     alert(response.data.msg);
-    router.replace("/");
+    window.location.replace("/");
   };
 
   return (
