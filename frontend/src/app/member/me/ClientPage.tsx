@@ -1,8 +1,6 @@
 "use client";
 
 import { components } from "@/lib/backend/apiV1/schema";
-import client from "@/lib/backend/client";
-import { useEffect, useState } from "react";
 
 export default function ClientPage({
   me,
