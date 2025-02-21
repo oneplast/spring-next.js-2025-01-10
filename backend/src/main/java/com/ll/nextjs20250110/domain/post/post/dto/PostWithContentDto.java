@@ -3,6 +3,7 @@ package com.ll.nextjs20250110.domain.post.post.dto;
 import com.ll.nextjs20250110.domain.post.post.entity.Post;
 import java.time.LocalDateTime;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 @Getter
@@ -33,6 +34,12 @@ public class PostWithContentDto {
 
     @NonNull
     private final boolean listed;
+
+    @Setter
+    private Boolean actorCanModify;
+
+    @Setter
+    private Boolean actorCanDelete;
 
     public PostWithContentDto(Post post) {
         this.id = post.getId();
