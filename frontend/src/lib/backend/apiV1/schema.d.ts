@@ -243,6 +243,8 @@ export interface components {
             content: string;
             published: boolean;
             listed: boolean;
+            actorCanModify?: boolean;
+            actorCanDelete?: boolean;
         };
         RsDataPostWithContentDto: {
             resultCode: string;

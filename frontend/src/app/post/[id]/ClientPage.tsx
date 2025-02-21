@@ -7,10 +7,8 @@ import { useRouter } from "next/navigation";
 
 export default function ClientPage({
   post,
-  me,
 }: {
   post: components["schemas"]["PostWithContentDto"];
-  me: components["schemas"]["MemberDto"];
 }) {
   const router = useRouter();
 
@@ -49,13 +47,11 @@ export default function ClientPage({
       <hr />
       <p>{post.content}</p>
       <div>
-        {me.id === post.authorId && (
+        {post.actorCanModify && (
           <Link href={`/post/${post.id}/edit`}>수정</Link>
         )}
 
-        {me.id === post.authorId && (
-          <button onClick={handleDelete}>삭제</button>
-        )}
+        {post.actorCanDelete && <button onClick={handleDelete}>삭제</button>}
       </div>
     </div>
   );

@@ -22,20 +22,5 @@ export default async function Page({ params }: { params: { id: number } }) {
 
   const post = response.data!!;
 
-  const fetchMeResponse = await client.GET("/api/v1/members/me", {
-    headers: {
-      cookie: (await cookies()).toString(),
-    },
-  });
-
-  const me = fetchMeResponse.data
-    ? fetchMeResponse.data
-    : {
-        id: 0,
-        createDate: "",
-        modifyDate: "",
-        nickname: "",
-      };
-
-  return <ClientPage post={post} me={me} />;
+  return <ClientPage post={post} />;
 }
